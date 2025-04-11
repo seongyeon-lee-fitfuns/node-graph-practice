@@ -13,7 +13,6 @@ export default function JointJsPlayground() {
       background: {
         color: "#f0f0f0",
       },
-      frozen: true,
       drawGrid: true,
       gridSize: 50,
       async: true,
@@ -48,7 +47,7 @@ export default function JointJsPlayground() {
     graph.addCell(rect);
     graph.addCell(rect2);
     graph.addCell(link);
-    paper.unfreeze();
+
     return () => {
       paper.remove();
     };
