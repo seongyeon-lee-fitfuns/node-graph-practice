@@ -18,6 +18,8 @@ export default function JointJsPlayground() {
       gridSize: 50,
       async: true,
       sorting: dia.Paper.sorting.APPROX,
+      width: window.innerWidth * 0.8,
+      height: window.innerHeight * 0.8,
     });
 
     const rect = new shapes.standard.Rectangle({
@@ -38,8 +40,14 @@ export default function JointJsPlayground() {
       },
     });
 
+    const link = new shapes.standard.Link({
+      source: { id: rect.id },
+      target: { id: rect2.id },
+    });
+
     graph.addCell(rect);
     graph.addCell(rect2);
+    graph.addCell(link);
     paper.unfreeze();
     return () => {
       paper.remove();
@@ -47,12 +55,9 @@ export default function JointJsPlayground() {
   }, []);
 
   return (
-    <div className="p-4">
+    <div className="p-4 flex flex-col items-center justify-center">
       <h1 className="text-2xl font-bold mb-4">JointJS 플레이그라운드</h1>
-      <div
-        ref={paperRef}
-        className="border border-gray-300 rounded-lg w-200 h-200"
-      />
+      <div ref={paperRef} className="border border-gray-300 rounded-lg" />
     </div>
   );
 }
